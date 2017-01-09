@@ -7,12 +7,13 @@ router.get('/', function (req, res, next) {
     var language = req.headers['accept-language'].split(',')[0];
     var regex = /\([\w\W]+?\)/g
     var software = req.headers['user-agent'].match(regex)[0].replace(/[\(\)]/g, "");
-    console.log({
+    var result = {
         ipaddress: ip,
         language: language,
         software: software
-    });
-    res.send(req.headers);
+    };
+    console.log(result);
+    res.send(result);
 });
 
 module.exports = router;
